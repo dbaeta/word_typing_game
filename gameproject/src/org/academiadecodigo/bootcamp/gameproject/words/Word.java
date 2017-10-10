@@ -25,6 +25,4 @@ public class Word extends Text implements Drawable {
     public void hide() {
 
     }
-
-
 }
