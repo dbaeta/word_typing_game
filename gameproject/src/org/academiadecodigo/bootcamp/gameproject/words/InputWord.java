@@ -10,15 +10,16 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
  */
 public class InputWord extends Word implements KeyboardHandler {
 
-    Word inputText = new Word();
-    String word = "";
+    Word inputText = new Word(); //Creates new Text Shape for player to write. Needs to be in the constructor
+    String word = ""; //Creates new string to pass as argument to the inputText
 
     public InputWord() {
         inputText.grow(30, 20);
-        inputText.draw();
-        inputKey();
+        inputText.draw(); //Show the word (method is already in Word class)
+        inputKey(); //Initializes the method
     }
 
+    //Adds the keys available to the keyboard listener
     public void inputKey() {
         Keyboard keyboard = new Keyboard(this);
 
@@ -32,6 +33,7 @@ public class InputWord extends Word implements KeyboardHandler {
 
         }
 
+        //Adds the BACKSPACE key
         KeyboardEvent kb = new KeyboardEvent();
         kb.setKey((char) 8);
         kb.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
@@ -40,14 +42,14 @@ public class InputWord extends Word implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-        while (keyboardEvent.getKey() == ((char) 8)) {
+        while (keyboardEvent.getKey() == ((char) 8)) { //Deletes the inputed text
             word = word.substring(0, word.length() - 1);
             inputText.setText(word);
             inputText.show();
         }
-        word += ((char) keyboardEvent.getKey());
-        inputText.setText(word);
-        inputText.show();
+        word += ((char) keyboardEvent.getKey()); //Adds the typed letter to word
+        inputText.setText(word); //Sets the input text with a new string
+        inputText.show(); // Displays the inputText with the new text
 
     }
 

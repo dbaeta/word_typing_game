@@ -9,10 +9,10 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public class InputBlock extends Block implements Drawable {
 
-    Rectangle box = new Rectangle(10, 710, 700, 200);
+    Rectangle box = new Rectangle(10, 710, 700, 200); //Creates a new rectangle for background
 
     public InputBlock(){
-        box.setColor(Color.BLUE);
-        box.fill();
+        box.setColor(Color.BLUE); //Sets the color
+        box.fill(); //Shows the shape on the screen
     }
 }
