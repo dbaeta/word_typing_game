@@ -10,7 +10,6 @@ public class Block implements Drawable {
 
     @Override
     public void show() {
-
     }
 
     @Override
