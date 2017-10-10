@@ -12,7 +12,14 @@ public class InputBlock extends Block implements Drawable {
     Rectangle box = new Rectangle(10, 710, 700, 200); //Creates a new rectangle for background
 
     public InputBlock(){
-        box.setColor(Color.BLUE); //Sets the color
-        box.fill(); //Shows the shape on the screen
+
     }
+
+    public void show() {
+        box.setColor(Color.GREEN);
+        box.fill();
+
+    }
+
+
 }

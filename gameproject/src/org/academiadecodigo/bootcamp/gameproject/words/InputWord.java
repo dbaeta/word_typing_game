@@ -14,8 +14,6 @@ public class InputWord extends Word implements KeyboardHandler {
     String word = ""; //Creates new string to pass as argument to the inputText
 
     public InputWord() {
-        inputText.grow(30, 20);
-        inputText.draw(); //Show the word (method is already in Word class)
         inputKey(); //Initializes the method
     }
 
@@ -42,11 +40,7 @@ public class InputWord extends Word implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-        while (keyboardEvent.getKey() == ((char) 8)) { //Deletes the inputed text
-            word = word.substring(0, word.length() - 1);
-            inputText.setText(word);
-            inputText.show();
-        }
+
         word += ((char) keyboardEvent.getKey()); //Adds the typed letter to word
         inputText.setText(word); //Sets the input text with a new string
         inputText.show(); // Displays the inputText with the new text
@@ -57,4 +51,19 @@ public class InputWord extends Word implements KeyboardHandler {
     public void keyReleased(KeyboardEvent keyboardEvent) {
 
     }
+
+    public String getWord() {
+        return word;
+    }
+
+    public void clearInput(){
+        word = "";
+        inputText.setText(word);
+    }
+
+    public void show() {
+        inputText.draw();
+    }
+
+
 }

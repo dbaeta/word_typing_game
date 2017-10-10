@@ -1,7 +1,9 @@
 package org.academiadecodigo.bootcamp.gameproject;
 
 import org.academiadecodigo.bootcamp.gameproject.blocks.InputBlock;
+import org.academiadecodigo.bootcamp.gameproject.blocks.OutputBlock;
 import org.academiadecodigo.bootcamp.gameproject.words.InputWord;
+import org.academiadecodigo.bootcamp.gameproject.words.OutputWord;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -9,24 +11,50 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public class Game {
 
-    public static void main(String[] args) {
-        Rectangle background = new Rectangle(10, 10, 700, 900);//Create new rectangle background
-        background.fill();//Show the rectangle
-        InputBlock box = new InputBlock();//Creates new background rectangle for word typing
-        InputWord word = new InputWord();//Creates new text for word typing
+    Rectangle background = new Rectangle(10, 10, 700, 900);//Create new rectangle background
+    OutputBlock fallingBlock = new OutputBlock();//Creates new falling block
+    OutputWord fallingWord = new OutputWord();
+    InputBlock box = new InputBlock();//Creates new background rectangle for word typing
+    InputWord word = new InputWord();//Creates new text for word typing
+
+
+
+
+
+    public void checkWord(OutputWord outputWord) {
+        if (word.getWord().equals(outputWord.getStr())){
+           fallingWord.hide();
+           fallingBlock.hide();
+           word.clearInput();
+        }
 
     }
-    public void checkWord() {
+
+    public void init(){
+        background.fill();
+        fallingBlock.show();
+        fallingWord.show();
+        box.show();
+        word.show();
+
 
     }
 
-    public void start() {
+
+    public void start() throws InterruptedException {
+
+        while (true) {
+            fallingBlock.move();
+            fallingWord.move();
+            checkWord(fallingWord);
+            Thread.sleep(10);
+
+        }
     }
 
     public void countLives() {
 
     }
-
 
 
 }
