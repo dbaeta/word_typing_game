@@ -21,20 +21,29 @@ public class InputWord extends Word implements KeyboardHandler {
 
     public void inputKey(){
         Keyboard keyboard = new Keyboard(this);
-        KeyboardEvent keyboardEvent = new KeyboardEvent();
-        keyboardEvent.setKey(KeyboardEvent.KEY_F);
-        keyboardEvent.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(keyboardEvent);
 
-        KeyboardEvent keyboardEvent1 = new KeyboardEvent();
-        keyboardEvent1.setKey(KeyboardEvent.KEY_A);
-        keyboardEvent1.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
-        keyboard.addEventListener(keyboardEvent1);
-        
+        for (int i = 65; i < 91; i++){
+            System.out.println((char) i);
+            System.out.println(i);
+            KeyboardEvent kbEvent = new KeyboardEvent();
+            kbEvent.setKey((char) i);
+            kbEvent.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+            keyboard.addEventListener(kbEvent);
+
+        }
+        KeyboardEvent kb = new KeyboardEvent();
+        kb.setKey((char) 8);
+        kb.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
+        keyboard.addEventListener(kb);
     }
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
+        while (keyboardEvent.getKey() == ((char)8)){
+            word = word.substring(0, word.length()-1);
+            inputText.setText(word);
+            inputText.show();
+        }
         word += ((char) keyboardEvent.getKey());
         inputText.setText(word);
         inputText.show();
