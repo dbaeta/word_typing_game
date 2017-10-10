@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.gameproject.blocks.InputBlock;
 import org.academiadecodigo.bootcamp.gameproject.blocks.OutputBlock;
 import org.academiadecodigo.bootcamp.gameproject.words.InputWord;
 import org.academiadecodigo.bootcamp.gameproject.words.OutputWord;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 
 /**
@@ -12,9 +13,9 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Game {
 
     Rectangle background = new Rectangle(10, 10, 700, 900);//Create new rectangle background
-    OutputBlock fallingBlock = new OutputBlock();//Creates new falling block
+    OutputBlock fallingBlock = new OutputBlock(10, 10, 700, 100, Color.MAGENTA);//Creates new falling block
     OutputWord fallingWord = new OutputWord();
-    InputBlock box = new InputBlock();//Creates new background rectangle for word typing
+    InputBlock box = new InputBlock(10, 710, 700, 200, Color.CYAN);//Creates new background rectangle for word typing
     InputWord word = new InputWord();//Creates new text for word typing
 
 

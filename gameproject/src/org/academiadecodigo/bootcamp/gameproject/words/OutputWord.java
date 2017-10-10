@@ -2,6 +2,8 @@ package org.academiadecodigo.bootcamp.gameproject.words;
 
 import org.academiadecodigo.bootcamp.gameproject.actions.Drawable;
 import org.academiadecodigo.bootcamp.gameproject.actions.Movable;
+import org.academiadecodigo.bootcamp.gameproject.blocks.OutputBlock;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 
 /**
@@ -11,6 +13,7 @@ public class OutputWord implements Movable, Drawable {
 
     String str = "CENAS";
     Text banana = new Text(350, 50, str);
+    OutputBlock block = new OutputBlock(3, 3, 50, 4, Color.CYAN);
 
     public OutputWord() {
 
@@ -22,7 +25,22 @@ public class OutputWord implements Movable, Drawable {
     }
 
     @Override
-    public void getPos() {
+    public void getX() {
+
+    }
+
+    @Override
+    public void getY() {
+
+    }
+
+    @Override
+    public void getWidth() {
+
+    }
+
+    @Override
+    public void getHeigth() {
 
     }
 
