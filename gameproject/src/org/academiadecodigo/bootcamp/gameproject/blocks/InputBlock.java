@@ -8,13 +8,13 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 public class InputBlock extends Block {
 
 
-    public InputBlock(int posX, int posY, int width, int height, Color color){
+    public InputBlock(int posX, int posY, int width, int height, Color color) {
         super(posX, posY, width, height);
         super.setColor(color);
     }
 
     @Override
-    public void move(){
+    public void move() {
 
     }
 }
