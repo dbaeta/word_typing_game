@@ -23,7 +23,7 @@ public class Game {
 
 
     public boolean checkLimit(int pos) {
-        if (fallingWord[pos].getBoxY() == word.getBoxY()) {
+        if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
             countLives();
             fallingWord[pos].hide();
             return true;
@@ -31,12 +31,13 @@ public class Game {
         return false;
     }
 
-    public void checkWord(OutputWord outputWord, int pos) {
+    public boolean checkWord(OutputWord outputWord, int pos) {
         if (word.getString().equals(outputWord.getString())) {
             fallingWord[pos].hide();
             word.clearInput();
+            return true;
         }
-
+        return false;
     }
 
     public void init() {
@@ -45,32 +46,34 @@ public class Game {
             fallingWord[i] = new OutputWord();
         }
 
+        fallingWord[0].show();
         word.show();
+
     }
 
 
     public void start() throws InterruptedException {
 
         int counter=0;
-        for (int i = 0; i < 800; i++) {
+        for (int i = 0; i < 10000; i++) {
 
-            fallingWord[counter].show();
-            boolean verify;
+
+            boolean verifyLimit;
+            boolean verifyWord;
+
             fallingWord[counter].move();
-            checkWord(fallingWord[counter], counter);
-            verify = checkLimit(counter);
+            verifyWord = checkWord(fallingWord[counter], counter);
+            verifyLimit = checkLimit(counter);
 
 
-            if (verify) {
-                System.out.println(i);
-            }
-            if (i % 15 == 0) {
+            if (verifyLimit || verifyWord) {
                 ++counter;
-                fallingWord[counter].show();
-
-
+               fallingWord[counter].show();
+               continue;
             }
-            Thread.sleep(10);
+
+            Thread.sleep(8);
+            word.show();
         }
     }
 

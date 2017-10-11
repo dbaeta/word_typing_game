@@ -44,4 +44,8 @@ public class OutputWord extends Word {
         return box.getY();
     }
 
+    public int getBoxHeight(){
+        return box.getHeigth();
+    }
+
 }
