@@ -12,14 +12,12 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public class Game {
 
-    Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle background
-    OutputWord [] fallingWord = new OutputWord[20];
+    Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle backgr
+    Score score = new Score(150,90);// ound
+    OutputWord[] fallingWord = new OutputWord[20];
     InputWord word = new InputWord(170, 550);//Creates new text for word typing
 
     private int lives = 3;
-
-
-
 
 
     public boolean checkLimit(int pos) {
@@ -42,7 +40,8 @@ public class Game {
 
     public void init() {
         background.fill();
-        for (int i = 0; i <20 ; i++) {
+        score.show();
+        for (int i = 0; i < 20; i++) {
             fallingWord[i] = new OutputWord();
         }
 
@@ -54,26 +53,29 @@ public class Game {
 
     public void start() throws InterruptedException {
 
-        int counter=0;
+        int counter = 0;
+
         for (int i = 0; i < 10000; i++) {
 
+            while (!gameOver()) {
+                boolean verifyLimit;
+                boolean verifyWord;
 
-            boolean verifyLimit;
-            boolean verifyWord;
-
-            fallingWord[counter].move();
-            verifyWord = checkWord(fallingWord[counter], counter);
-            verifyLimit = checkLimit(counter);
+                fallingWord[counter].move();
+                verifyWord = checkWord(fallingWord[counter], counter);
+                verifyLimit = checkLimit(counter);
 
 
-            if (verifyLimit || verifyWord) {
-                ++counter;
-               fallingWord[counter].show();
-               continue;
+                if (verifyLimit || verifyWord) {
+                    ++counter;
+                    fallingWord[counter].show();
+                    continue;
+                }
+
+                Thread.sleep(8);
+                word.show();
             }
-
-            Thread.sleep(8);
-            word.show();
+//Metodo imagem Game Over!!
         }
     }
 
@@ -81,6 +83,13 @@ public class Game {
     public void countLives() {
         lives--;
 
+    }
+
+    public boolean gameOver() {
+        if (lives == 0) {
+            return true;
+        }
+        return false;
     }
 
 

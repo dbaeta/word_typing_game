@@ -28,6 +28,7 @@ public class InputWord extends Word implements KeyboardHandler {
     public void inputKey() {
         Keyboard keyboard = new Keyboard(this);
 
+
         for (int i = 65; i < 91; i++) {
             KeyboardEvent kbEvent = new KeyboardEvent();
             kbEvent.setKey((char) i);
@@ -46,6 +47,10 @@ public class InputWord extends Word implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
+        if(keyboardEvent.getKey()==8){
+            clearInput();
+            return;
+        }
         setString (getString() + (char) keyboardEvent.getKey()); //Adds the typed letter to word
 
     }
