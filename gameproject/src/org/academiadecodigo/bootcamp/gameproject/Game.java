@@ -13,7 +13,7 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Game {
 
     Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle background
-    OutputWord fallingWord = new OutputWord();
+    OutputWord [] fallingWord = new OutputWord[20];
     InputWord word = new InputWord(170, 550);//Creates new text for word typing
 
     private int lives = 3;
@@ -22,18 +22,18 @@ public class Game {
 
 
 
-    public boolean checkLimit() {
-        if (fallingWord.getBoxY() == word.getBoxY()) {
+    public boolean checkLimit(int pos) {
+        if (fallingWord[pos].getBoxY() == word.getBoxY()) {
             countLives();
-            fallingWord.hide();
+            fallingWord[pos].hide();
             return true;
         }
         return false;
     }
 
-    public void checkWord(OutputWord outputWord) {
+    public void checkWord(OutputWord outputWord, int pos) {
         if (word.getString().equals(outputWord.getString())) {
-            fallingWord.hide();
+            fallingWord[pos].hide();
             word.clearInput();
         }
 
@@ -41,25 +41,39 @@ public class Game {
 
     public void init() {
         background.fill();
-        fallingWord.show();
+        for (int i = 0; i <20 ; i++) {
+            fallingWord[i] = new OutputWord();
+        }
+
         word.show();
     }
 
 
     public void start() throws InterruptedException {
 
+        int counter=0;
+        for (int i = 0; i < 800; i++) {
 
-        for (int i = 0; i < 800 ; i++) {
+            fallingWord[counter].show();
             boolean verify;
-            fallingWord.move();
-            checkWord(fallingWord);
-            verify = checkLimit();
+            fallingWord[counter].move();
+            checkWord(fallingWord[counter], counter);
+            verify = checkLimit(counter);
+
+
             if (verify) {
                 System.out.println(i);
+            }
+            if (i % 15 == 0) {
+                ++counter;
+                fallingWord[counter].show();
+
+
             }
             Thread.sleep(10);
         }
     }
+
 
     public void countLives() {
         lives--;
