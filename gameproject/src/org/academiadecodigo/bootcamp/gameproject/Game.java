@@ -20,7 +20,8 @@ public class Game {
 
     private int lives = 3;
 
-    
+
+
 
 
     public boolean checkLimit() {
@@ -28,7 +29,7 @@ public class Game {
             countLives();
             fallingBlock.hide();
             fallingWord.hide();
-
+            return true;
         }
         return false;
     }
@@ -55,13 +56,17 @@ public class Game {
 
     public void start() throws InterruptedException {
 
-        while (true) {
+
+        for (int i = 0; i < 800 ; i++) {
+            boolean verify;
             fallingBlock.move();
             fallingWord.move();
             checkWord(fallingWord);
-            checkLimit();
+            verify = checkLimit();
+            if (verify) {
+                System.out.println(i);
+            }
             Thread.sleep(10);
-
         }
     }
 
