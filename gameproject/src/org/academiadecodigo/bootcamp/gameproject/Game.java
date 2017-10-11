@@ -13,10 +13,8 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Game {
 
     Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle background
-    OutputBlock fallingBlock = new OutputBlock(10, 10, 350, 50, Color.MAGENTA);//Creates new falling block
     OutputWord fallingWord = new OutputWord();
-    InputBlock box = new InputBlock(10, 510, 350, 100, Color.CYAN);//Creates new background rectangle for word typing
-    InputWord word = new InputWord();//Creates new text for word typing
+    InputWord word = new InputWord(170, 550);//Creates new text for word typing
 
     private int lives = 3;
 
@@ -25,9 +23,8 @@ public class Game {
 
 
     public boolean checkLimit() {
-        if (fallingBlock.getY() == box.getY()) {
+        if (fallingWord.getBoxY() == word.getBoxY()) {
             countLives();
-            fallingBlock.hide();
             fallingWord.hide();
             return true;
         }
@@ -35,9 +32,8 @@ public class Game {
     }
 
     public void checkWord(OutputWord outputWord) {
-        if (word.getWord().equals(outputWord.getStr())) {
+        if (word.getString().equals(outputWord.getString())) {
             fallingWord.hide();
-            fallingBlock.hide();
             word.clearInput();
         }
 
@@ -45,12 +41,8 @@ public class Game {
 
     public void init() {
         background.fill();
-        fallingBlock.show();
         fallingWord.show();
-        box.show();
         word.show();
-
-
     }
 
 
@@ -59,7 +51,6 @@ public class Game {
 
         for (int i = 0; i < 800 ; i++) {
             boolean verify;
-            fallingBlock.move();
             fallingWord.move();
             checkWord(fallingWord);
             verify = checkLimit();

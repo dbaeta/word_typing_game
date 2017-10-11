@@ -1,5 +1,7 @@
 package org.academiadecodigo.bootcamp.gameproject.words;
 
+import org.academiadecodigo.bootcamp.gameproject.blocks.InputBlock;
+import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
@@ -10,14 +12,19 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
  */
 public class InputWord extends Word implements KeyboardHandler {
 
-    Word inputText = new Word(); //Creates new Text Shape for player to write. Needs to be in the constructor
-    String word = ""; //Creates new string to pass as argument to the inputText
+    InputBlock box = new InputBlock(10, 510, 350, 100, Color.CYAN);
 
-    public InputWord() {
+    public InputWord(int posX, int posY) {
+        super(posX, posY, "");
         inputKey(); //Initializes the method
     }
 
-    //Adds the keys available to the keyboard listener
+
+
+    public void clearInput() {
+        setString("");
+    }
+
     public void inputKey() {
         Keyboard keyboard = new Keyboard(this);
 
@@ -39,9 +46,7 @@ public class InputWord extends Word implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
-        word += ((char) keyboardEvent.getKey()); //Adds the typed letter to word
-        inputText.setText(word); //Sets the input text with a new string
-        inputText.show(); // Displays the inputText with the new text
+        setString (getString() + (char) keyboardEvent.getKey()); //Adds the typed letter to word
 
     }
 
@@ -50,18 +55,19 @@ public class InputWord extends Word implements KeyboardHandler {
 
     }
 
-    public String getWord() {
-        return word;
-    }
-
-    public void clearInput(){
-        word = "";
-        inputText.setText(word);
-    }
-
+    @Override
     public void show() {
-        inputText.draw();
+        box.show();
+        super.show();
     }
 
+    @Override
+    public void hide(){
+        super.hide();
+        box.hide();
+    }
 
+    public int getBoxY(){
+        return box.getY();
+    }
 }
