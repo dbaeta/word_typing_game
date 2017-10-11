@@ -9,7 +9,7 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 public class Word extends Text implements Drawable {
 
     public Word(){
-        super(300, 800, "");//Superclass (Text) constructor
+        super(170, 550, "");//Superclass (Text) constructor
     }
 
     public void setText(){

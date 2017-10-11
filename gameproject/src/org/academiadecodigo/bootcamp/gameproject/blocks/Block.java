@@ -37,22 +37,22 @@ public class Block implements Drawable, Movable {
     }
 
     @Override
-    public void getX() {
-        box.getX();
+    public int getX() {
+        return box.getX();
     }
 
     @Override
-    public void getY() {
-        box.getY();
+    public int getY() {
+        return box.getY();
     }
 
     @Override
-    public void getWidth() {
-        box.getWidth();
+    public int getWidth() {
+        return box.getWidth();
     }
 
     @Override
-    public void getHeigth() {
-        box.getHeight();
+    public int getHeigth() {
+        return box.getHeight();
     }
 }

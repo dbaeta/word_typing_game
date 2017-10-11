@@ -11,14 +11,15 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
  */
 public class OutputWord implements Movable, Drawable {
 
-    String [] str ={"IMPORT", "RETURN", "PUBLIC", "STRING", "JAVA", "PRIVATE", "UTIL", "STATIC", "THROWS", "BOOLEAN",
+
+    String[] str = {"IMPORT", "RETURN", "PUBLIC", "STRING", "JAVA", "PRIVATE", "UTIL", "STATIC", "THROWS", "BOOLEAN",
             "PACKAGE", "ANDROID", "APACHE", "JAVAX", "LENGTH", "OBJECT", "CONTEXT", "APPEND", "AUTHOR", "METHOD"};
 
 
-    int chooseWord = (int)Math.floor(Math.random()*str.length);
+    int chooseWord = (int) Math.floor(Math.random() * str.length);
 
 
-    Text banana = new Text(350, 50, str[chooseWord] );
+    Text banana = new Text(175, 25, str[chooseWord]);
     OutputBlock block = new OutputBlock(3, 3, 50, 4, Color.CYAN);
 
     public OutputWord() {
@@ -27,26 +28,29 @@ public class OutputWord implements Movable, Drawable {
 
     @Override
     public void move() {
-        banana.translate(0,1);
+        banana.translate(0, 1);
     }
 
     @Override
-    public void getX() {
-
-    }
-
-    @Override
-    public void getY() {
+    public int getX() {
+        return 0;
 
     }
 
     @Override
-    public void getWidth() {
+    public int getY() {
+        return 0;
 
     }
 
     @Override
-    public void getHeigth() {
+    public int getWidth() {
+        return 0;
+    }
+
+    @Override
+    public int getHeigth() {
+        return 0;
 
     }
 
@@ -61,7 +65,7 @@ public class OutputWord implements Movable, Drawable {
     }
 
     public String getStr() {
-        System.out.println(str[chooseWord]);
+
         return str[chooseWord];
     }
 }
