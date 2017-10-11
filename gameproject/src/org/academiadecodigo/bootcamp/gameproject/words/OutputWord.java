@@ -11,8 +11,14 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
  */
 public class OutputWord implements Movable, Drawable {
 
-    String str = "CENAS";
-    Text banana = new Text(350, 50, str);
+    String [] str ={"IMPORT", "RETURN", "PUBLIC", "STRING", "JAVA", "PRIVATE", "UTIL", "STATIC", "THROWS", "BOOLEAN",
+            "PACKAGE", "ANDROID", "APACHE", "JAVAX", "LENGTH", "OBJECT", "CONTEXT", "APPEND", "AUTHOR", "METHOD"};
+
+
+    int chooseWord = (int)Math.floor(Math.random()*str.length);
+
+
+    Text banana = new Text(350, 50, str[chooseWord] );
     OutputBlock block = new OutputBlock(3, 3, 50, 4, Color.CYAN);
 
     public OutputWord() {
@@ -55,6 +61,7 @@ public class OutputWord implements Movable, Drawable {
     }
 
     public String getStr() {
-        return str;
+        System.out.println(str[chooseWord]);
+        return str[chooseWord];
     }
 }
