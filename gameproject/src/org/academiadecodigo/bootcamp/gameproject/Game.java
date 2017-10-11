@@ -18,8 +18,9 @@ public class Game {
     InputBlock box = new InputBlock(10, 510, 350, 100, Color.CYAN);//Creates new background rectangle for word typing
     InputWord word = new InputWord();//Creates new text for word typing
 
-
     private int lives = 3;
+
+    
 
 
     public boolean checkLimit() {
@@ -66,7 +67,7 @@ public class Game {
 
     public void countLives() {
         lives--;
-        
+
     }
 
 
