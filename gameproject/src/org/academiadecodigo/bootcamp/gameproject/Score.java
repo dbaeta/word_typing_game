@@ -18,12 +18,13 @@ public class Score implements Drawable {
     Text lives;
 
     private int scorePoints;
+    private int gameLives=3;
 
 
     public Score(int width, int height) {
         this.box = new Rectangle(10, 560, width, height);
         this.score = new Text(50,580, "SCORE " + getScorePoints());
-        this.lives = new Text(250,580,"LIVES "); // + getLives());
+        this.lives = new Text(250,580,"LIVES " + getLives() ); // + getLives());
     }
 
     public void setColor(Color color) {
@@ -35,7 +36,16 @@ public class Score implements Drawable {
     }
 
     public int getScorePoints() {
+
         return scorePoints;
+    }
+
+    public void setGameLives(int gameLives) {
+        this.gameLives = gameLives;
+    }
+
+    public int getLives(){
+        return gameLives;
     }
 
     @Override

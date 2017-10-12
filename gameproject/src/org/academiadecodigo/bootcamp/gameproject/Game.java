@@ -17,12 +17,12 @@ public class Game {
     OutputWord[] fallingWord = new OutputWord[20];
     InputWord word = new InputWord(160, 510);//Creates new text for word typing
 
-    private int lives = 3;
+
 
 
     public boolean checkLimit(int pos) {
         if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
-            countLives();
+           score.setGameLives(score.getLives()-1);
             fallingWord[pos].hide();
             return true;
         }
@@ -80,13 +80,8 @@ public class Game {
     }
 
 
-    public void countLives() {
-        lives--;
-
-    }
-
     public boolean gameOver() {
-        if (lives == 0) {
+        if (score.getLives() == 0) {
             return true;
         }
         return false;
