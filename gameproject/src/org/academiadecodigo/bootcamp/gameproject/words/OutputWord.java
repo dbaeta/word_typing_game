@@ -9,15 +9,19 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 public class OutputWord extends Word {
 
 
-    String[] str = {"IMPORT", "RETURN", "PUBLIC", "STRING", "JAVA", "PRIVATE", "UTIL", "STATIC", "THROWS", "BOOLEAN",
-            "PACKAGE", "ANDROID", "APACHE", "JAVAX", "LENGTH", "OBJECT", "CONTEXT", "APPEND", "AUTHOR", "METHOD"};
+   private String[] str = {"IMPORT", "RETURN", "PUBLIC", "STRING", "JAVA", "PRIVATE", "UTIL", "STATIC", "THROWS", "BOOLEAN",
+            "PACKAGE", "ANDROID", "APACHE", "JAVAX", "LENGTH", "OBJECT", "CONTEXT", "APPEND", "AUTHOR", "SYNCHRONIZED",
+            "GOOGLE", "MODEL", "COMMON", "BYTE", "CLIENT", "SYSTEM", "FROM", "GENERATED", "ANNOTATION", "REQUEST",
+            "MESSAGE", "CONTENT", "INTEGER", "EXCEPTION", "INSTANCEOF", "DEFAULT", "SPRINGFRAMEWORK", "ATTRIBUTE",
+            "PROPERTY", "RETURNS", "DESCRIPTION", "PERSISTENCE","INFORMATION", "FRAMEWORK", "SPECIFIED",  "METHOD",
+            "ANNOTATIONS", "COLLECTION","THROWABLE", "EXECUTE", "REFERENCE", "ITERATOR", "BOOLEAN", "FACTORY","RUNTIME"};
 
-    int chooseWord = (int) Math.floor(Math.random() * str.length);
+    private int chooseWord = (int) Math.floor(Math.random() * str.length);
 
-    OutputBlock box = new OutputBlock(10, 10, 350, 50, Color.MAGENTA);
+    private OutputBlock box = new OutputBlock(10, 10, 350, 50, Color.MAGENTA);
 
     public OutputWord() {
-        super(175, 25, "");
+        super(165, 25, "");
     }
 
     @Override
@@ -35,16 +39,16 @@ public class OutputWord extends Word {
     }
 
     @Override
-    public void hide(){
+    public void hide() {
         super.hide();
         box.hide();
     }
 
-    public int getBoxY(){
+    public int getBoxY() {
         return box.getY();
     }
 
-    public int getBoxHeight(){
+    public int getBoxHeight() {
         return box.getHeigth();
     }
 

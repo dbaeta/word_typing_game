@@ -13,16 +13,16 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Game {
 
     Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle backgr
-    Score score = new Score(350,50);// ound
+    Score score = new Score(350, 50);// ound
     OutputWord[] fallingWord = new OutputWord[20];
     InputWord word = new InputWord(160, 510);//Creates new text for word typing
 
-
+    private int speed = 8;
 
 
     public boolean checkLimit(int pos) {
         if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
-           score.setGameLives(score.getLives()-1);
+            score.setGameLives(score.getLives() - 1);
             fallingWord[pos].hide();
             return true;
         }
@@ -61,19 +61,24 @@ public class Game {
                 boolean verifyLimit;
                 boolean verifyWord;
 
+
                 fallingWord[counter].move();
                 verifyWord = checkWord(fallingWord[counter], counter);
                 verifyLimit = checkLimit(counter);
 
 
-                if (verifyLimit || verifyWord) {
+                if ( verifyLimit || verifyWord) {
+
                     ++counter;
                     fallingWord[counter].show();
+                    gameSpeed();
+                    //System.out.println(score.getLives());
                     continue;
-                }
 
-                Thread.sleep(8);
+                }
+                Thread.sleep(speed);
                 word.show();
+
             }
 //Metodo imagem Game Over!!
         }
@@ -85,6 +90,11 @@ public class Game {
             return true;
         }
         return false;
+    }
+
+    public int gameSpeed() {
+
+        return speed = (int) (speed - 1);
     }
 
 
