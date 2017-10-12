@@ -21,9 +21,9 @@ public class Score implements Drawable {
 
 
     public Score(int width, int height) {
-        this.box = new Rectangle(210, 10, width, height);
-        this.score = new Text(240,40, "SCORE " + getScorePoints());
-        this.lives = new Text(240,60,"LIVES "); // + getLives());
+        this.box = new Rectangle(10, 560, width, height);
+        this.score = new Text(50,580, "SCORE " + getScorePoints());
+        this.lives = new Text(250,580,"LIVES "); // + getLives());
     }
 
     public void setColor(Color color) {

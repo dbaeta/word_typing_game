@@ -13,9 +13,9 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 public class Game {
 
     Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle backgr
-    Score score = new Score(150,90);// ound
+    Score score = new Score(350,50);// ound
     OutputWord[] fallingWord = new OutputWord[20];
-    InputWord word = new InputWord(170, 550);//Creates new text for word typing
+    InputWord word = new InputWord(160, 510);//Creates new text for word typing
 
     private int lives = 3;
 
