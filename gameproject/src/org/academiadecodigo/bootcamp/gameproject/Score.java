@@ -4,7 +4,6 @@ import org.academiadecodigo.bootcamp.gameproject.actions.Drawable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
-import sun.security.x509.CRLDistributionPointsExtension;
 
 
 /**
@@ -51,9 +50,10 @@ public class Score implements Drawable {
     }
 
 
-    public void setScorePoints(int scorePoints) {
-        this.scorePoints += scorePoints;
-        score.setText("SCORE " + this.score);
+    public void setScorePoints(int boxY) {
+        this.scorePoints += (500 / (boxY/2))*10;
+        int updateScore = scorePoints;
+        score.setText("SCORE " + updateScore);
         show();
     }
 
@@ -70,6 +70,4 @@ public class Score implements Drawable {
     public void hide() {
 
     }
-
-
 }

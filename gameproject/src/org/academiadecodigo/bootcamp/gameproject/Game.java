@@ -24,6 +24,7 @@ public class Game {
         if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
            score.setGameLives(score.getLives()-1);
             fallingWord[pos].hide();
+            word.clearInput();
             return true;
         }
         return false;
@@ -33,6 +34,7 @@ public class Game {
         if (word.getString().equals(outputWord.getString())) {
             fallingWord[pos].hide();
             word.clearInput();
+            score.setScorePoints(fallingWord[pos].getBoxY());
             return true;
         }
 
