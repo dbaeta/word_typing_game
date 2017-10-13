@@ -57,30 +57,32 @@ public class Game {
 
         for (int i = 0; i < 10000; i++) {
 
-            while (!gameOver()) {
-                boolean verifyLimit;
-                boolean verifyWord;
+            for (int j = 0; j < 5; j++) {
+                while (!gameOver()) {
+                    boolean verifyLimit;
+                    boolean verifyWord;
 
 
-                fallingWord[counter].move();
-                verifyWord = checkWord(fallingWord[counter], counter);
-                verifyLimit = checkLimit(counter);
+                    fallingWord[counter].move();
+                    verifyWord = checkWord(fallingWord[counter], counter);
+                    verifyLimit = checkLimit(counter);
 
 
-                if ( verifyLimit || verifyWord) {
+                    if (verifyLimit || verifyWord) {
 
-                    ++counter;
-                    fallingWord[counter].show();
-                    gameSpeed();
-                    //System.out.println(score.getLives());
-                    continue;
+                        ++counter;
+                        fallingWord[counter].show();
+                        gameSpeed();
+                        //System.out.println(score.getLives());
+                        continue;
+
+                    }
+                    Thread.sleep(speed);
+                    word.show();
 
                 }
-                Thread.sleep(speed);
-                word.show();
-
-            }
 //Metodo imagem Game Over!!
+            }
         }
     }
 
