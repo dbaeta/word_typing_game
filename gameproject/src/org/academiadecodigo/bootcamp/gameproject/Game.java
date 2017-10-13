@@ -76,7 +76,6 @@ public class Game {
                     ++counter;
                     fallingWord[counter].show();
                     changed = false;
-                    //System.out.println(score.getLives());
                     continue;
 
                 }
