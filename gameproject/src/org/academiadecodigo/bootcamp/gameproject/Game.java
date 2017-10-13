@@ -12,15 +12,15 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
  */
 public class Game {
 
-    Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle backgr
-    Score score = new Score(350,50);// ound
-    OutputWord[] fallingWord = new OutputWord[20];
-    InputWord word = new InputWord(160, 510);//Creates new text for word typing
+    private Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle backgr
+    private Score score = new Score(350,50);
+    private OutputWord[] fallingWord = new OutputWord[20];
+    private InputWord word = new InputWord(160, 510);//Creates new text for word typing
 
 
 
 
-    public boolean checkLimit(int pos) {
+    private boolean checkLimit(int pos) {
         if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
            score.setGameLives(score.getLives()-1);
             fallingWord[pos].hide();
@@ -29,7 +29,8 @@ public class Game {
         return false;
     }
 
-    public boolean checkWord(OutputWord outputWord, int pos) {
+    //Falta implementar o score.setScorePoints()
+    private boolean checkWord(OutputWord outputWord, int pos) {
         if (word.getString().equals(outputWord.getString())) {
             fallingWord[pos].hide();
             word.clearInput();
@@ -38,7 +39,7 @@ public class Game {
         return false;
     }
 
-    public void init() {
+    void init() {
         background.fill();
         score.show();
         for (int i = 0; i < 20; i++) {
@@ -51,7 +52,7 @@ public class Game {
     }
 
 
-    public void start() throws InterruptedException {
+    void start() throws InterruptedException {
 
         int counter = 0;
 
@@ -80,11 +81,8 @@ public class Game {
     }
 
 
-    public boolean gameOver() {
-        if (score.getLives() == 0) {
-            return true;
-        }
-        return false;
+    private boolean gameOver() { //
+        return (score.getLives() == 0) ;
     }
 
 

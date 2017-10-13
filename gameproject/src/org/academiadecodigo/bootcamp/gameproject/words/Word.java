@@ -7,7 +7,7 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 /**
  * Created by Daniel Baeta on 06/10/17.
  */
-public class Word implements Drawable, Movable {
+abstract class Word implements Drawable, Movable {
 
     Text text;
     String string = "";

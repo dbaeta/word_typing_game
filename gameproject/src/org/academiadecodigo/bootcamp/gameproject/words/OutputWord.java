@@ -9,10 +9,10 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 public class OutputWord extends Word {
 
 
-    String[] str = {"IMPORT", "RETURN", "PUBLIC", "STRING", "JAVA", "PRIVATE", "UTIL", "STATIC", "THROWS", "BOOLEAN",
+    private String[] str = {"IMPORT", "RETURN", "PUBLIC", "STRING", "JAVA", "PRIVATE", "UTIL", "STATIC", "THROWS", "BOOLEAN",
             "PACKAGE", "ANDROID", "APACHE", "JAVAX", "LENGTH", "OBJECT", "CONTEXT", "APPEND", "AUTHOR", "METHOD"};
 
-    int chooseWord = (int) Math.floor(Math.random() * str.length);
+    private int chooseWord = (int) Math.floor(Math.random() * str.length);
 
     OutputBlock box = new OutputBlock(10, 10, 350, 50, Color.MAGENTA);
 

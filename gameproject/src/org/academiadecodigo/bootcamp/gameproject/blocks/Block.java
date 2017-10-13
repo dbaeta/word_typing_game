@@ -9,11 +9,11 @@ import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 /**
  * Created by Daniel Baeta on 06/10/17.
  */
-public class Block implements Drawable, Movable {
+abstract class Block implements Drawable, Movable {
 
     Rectangle box;
 
-    public Block(int posX, int posY, int width, int height) {
+    Block(int posX, int posY, int width, int height) {
         box = new Rectangle(posX, posY, width, height);
     }
 
