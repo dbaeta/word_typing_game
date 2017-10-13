@@ -17,7 +17,8 @@ public class Game {
     OutputWord[] fallingWord = new OutputWord[20];
     InputWord word = new InputWord(160, 510);//Creates new text for word typing
 
-    private int speed = 8;
+    private int speed = 15;
+    private boolean changed;
 
 
     public boolean checkLimit(int pos) {
@@ -57,34 +58,45 @@ public class Game {
 
         for (int i = 0; i < 10000; i++) {
 
-            for (int j = 0; j < 5; j++) {
-                while (!gameOver()) {
-                    boolean verifyLimit;
-                    boolean verifyWord;
+
+            while (!gameOver()) {
 
 
-                    fallingWord[counter].move();
-                    verifyWord = checkWord(fallingWord[counter], counter);
-                    verifyLimit = checkLimit(counter);
+                boolean verifyLimit;
+                boolean verifyWord;
+
+                fallingWord[counter].move();
+                verifyWord = checkWord(fallingWord[counter], counter);
+                verifyLimit = checkLimit(counter);
 
 
-                    if (verifyLimit || verifyWord) {
+                if (verifyLimit || verifyWord) {
 
-                        ++counter;
-                        fallingWord[counter].show();
-                        gameSpeed();
-                        //System.out.println(score.getLives());
-                        continue;
-
-                    }
-                    Thread.sleep(speed);
-                    word.show();
+                    ++counter;
+                    fallingWord[counter].show();
+                    changed = false;
+                    //System.out.println(score.getLives());
+                    continue;
 
                 }
-//Metodo imagem Game Over!!
+
+                if (counter>0 && counter%5==0){
+                    if(!this.changed){
+                        gameSpeed();
+                        this.changed = true;
+                    }
+                }
+
+                Thread.sleep(speed);
+                System.out.println(counter + " " + speed);
+                word.show();
+
             }
+            //Metodo imagem Game Over!!
         }
     }
+
+
 
 
     public boolean gameOver() {
@@ -94,10 +106,9 @@ public class Game {
         return false;
     }
 
-    public int gameSpeed() {
+    public void gameSpeed() {
 
-        return speed = (int) (speed - 1);
+        this.speed--;
     }
-
 
 }
