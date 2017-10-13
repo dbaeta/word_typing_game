@@ -38,6 +38,10 @@ abstract class Word implements Drawable, Movable {
         text.draw();
     }
 
+    public void setTextMiddle (int widthBox){
+        text.translate(((widthBox/2)-(text.getWidth()/2)) - text.getX() + 10, 0);
+    }
+
     @Override
     public void move() {
         text.translate(0,1);

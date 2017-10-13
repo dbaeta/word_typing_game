@@ -30,6 +30,7 @@ public class OutputWord extends Word {
     public void show() {
         box.show();
         super.setString(str[chooseWord]);
+        super.setTextMiddle(box.getWidth());
         super.show();
 
     }
