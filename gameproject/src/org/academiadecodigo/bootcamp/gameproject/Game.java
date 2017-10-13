@@ -19,6 +19,16 @@ public class Game {
 
 
     private boolean checkLimit(int pos) {
+    Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle backgr
+    Score score = new Score(350, 50);// ound
+    OutputWord[] fallingWord = new OutputWord[20];
+    InputWord word = new InputWord(160, 510);//Creates new text for word typing
+
+    private int speed = 15;
+    private boolean changed;
+
+
+    public boolean checkLimit(int pos) {
         if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
             score.setGameLives(score.getLives() - 1);
             fallingWord[pos].hide();
@@ -35,6 +45,7 @@ public class Game {
             word.clearInput();
             return true;
         }
+
         return false;
     }
 
@@ -57,7 +68,10 @@ public class Game {
 
         for (int i = 0; i < 10000; i++) {
 
+
             while (!gameOver()) {
+
+
                 boolean verifyLimit;
                 boolean verifyWord;
 
@@ -67,22 +81,49 @@ public class Game {
 
 
                 if (verifyLimit || verifyWord) {
+
                     ++counter;
                     fallingWord[counter].show();
+                    changed = false;
+                    //System.out.println(score.getLives());
                     continue;
+
                 }
 
-                Thread.sleep(8);
+                if (counter>0 && counter%5==0){
+                    if(!this.changed){
+                        gameSpeed();
+                        this.changed = true;
+                    }
+                }
+
+                Thread.sleep(speed);
+                System.out.println(counter + " " + speed);
                 word.show();
+
             }
-//Metodo imagem Game Over!!
+            //Metodo imagem Game Over!!
         }
     }
 
 
+<<<<<<< HEAD
     private boolean gameOver() { //
         return (score.getLives() == 0);
+=======
+
+
+    public boolean gameOver() {
+        if (score.getLives() == 0) {
+            return true;
+        }
+        return false;
+>>>>>>> fceaa1718931508a9d85ab45fca15eed25859b5a
     }
 
+    public void gameSpeed() {
+
+        this.speed--;
+    }
 
 }

@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.gameproject.actions.Drawable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import sun.security.x509.CRLDistributionPointsExtension;
 
 
 /**
@@ -24,29 +25,51 @@ public class Score implements Drawable {
     public Score(int width, int height) {
         this.box = new Rectangle(10, 560, width, height);
         this.score = new Text(50,580, "SCORE " + getScorePoints());
-        this.lives = new Text(250,580,"LIVES " + getLives() ); // + getLives());
+        this.lives = new Text(250,580, "LIVES " + getLives() );
     }
 
     public void setColor(Color color) {
         box.setColor(color);
     }
 
-    public void setScorePoints(int scorePoints) {
-        this.scorePoints = scorePoints;
+
+    public int getLives(){
+        return gameLives;
     }
 
+
+    public void setGameLives(int gameLives) {
+        this.gameLives = gameLives;
+        lives.setText("LIVES " + this.gameLives);
+        show();
+    }
+
+<<<<<<< HEAD
     int getScorePoints() {
+=======
+
+    public int getScorePoints() {
+>>>>>>> fceaa1718931508a9d85ab45fca15eed25859b5a
 
         return scorePoints;
     }
 
+<<<<<<< HEAD
     void setGameLives(int gameLives) {
         this.gameLives = gameLives;
     }
 
     int getLives(){
         return gameLives;
+=======
+
+    public void setScorePoints(int scorePoints) {
+        this.scorePoints += scorePoints;
+        score.setText("SCORE " + this.score);
+        show();
+>>>>>>> fceaa1718931508a9d85ab45fca15eed25859b5a
     }
+
 
     @Override
     public void show() {
