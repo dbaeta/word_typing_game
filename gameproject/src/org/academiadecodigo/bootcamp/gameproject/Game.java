@@ -88,7 +88,7 @@ public class Game {
                 }
 
                 Thread.sleep(speed);
-                System.out.println(counter + " " + speed);
+
                 word.show();
 
             }
