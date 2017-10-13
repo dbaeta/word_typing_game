@@ -35,6 +35,7 @@ public class Game {
             word.clearInput();
             return true;
         }
+
         return false;
     }
 
