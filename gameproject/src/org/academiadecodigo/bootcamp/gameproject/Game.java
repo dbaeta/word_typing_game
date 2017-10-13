@@ -65,6 +65,10 @@ public class Game {
 
         while (!gameOver()) {
 
+            if (counter > 54){
+                System.out.println("You win");
+                break;
+            }
 
             boolean verifyLimit;
             boolean verifyWord;
@@ -97,12 +101,14 @@ public class Game {
             word.show();
 
         }
+
         //Metodo imagem Game Over!!
     }
     
 
     public boolean gameOver() {
         if (score.getLives() == 0) {
+            System.out.println("You lost");
             return true;
         }
         return false;
