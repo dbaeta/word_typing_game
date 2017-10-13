@@ -4,6 +4,7 @@ import org.academiadecodigo.bootcamp.gameproject.actions.Drawable;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import sun.security.x509.CRLDistributionPointsExtension;
 
 
 /**
@@ -31,14 +32,11 @@ public class Score implements Drawable {
         box.setColor(color);
     }
 
-    public void setScorePoints(int scorePoints) {
-        this.scorePoints = scorePoints;
+
+    public int getLives(){
+        return gameLives;
     }
 
-    public int getScorePoints() {
-
-        return scorePoints;
-    }
 
     public void setGameLives(int gameLives) {
         this.gameLives = gameLives;
@@ -46,9 +44,19 @@ public class Score implements Drawable {
         show();
     }
 
-    public int getLives(){
-        return gameLives;
+
+    public int getScorePoints() {
+
+        return scorePoints;
     }
+
+
+    public void setScorePoints(int scorePoints) {
+        this.scorePoints += scorePoints;
+        score.setText("SCORE " + this.score);
+        show();
+    }
+
 
     @Override
     public void show() {
