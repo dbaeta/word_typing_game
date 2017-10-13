@@ -7,7 +7,7 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 /**
  * Created by Daniel Baeta on 06/10/17.
  */
-public class Word implements Drawable, Movable {
+abstract class Word implements Drawable, Movable {
 
     Text text;
     String string = "";
@@ -36,6 +36,10 @@ public class Word implements Drawable, Movable {
         this.string = string;
         text.setText(string);
         text.draw();
+    }
+
+    public void setTextMiddle (int widthBox){
+        text.translate(((widthBox/2)-(text.getWidth()/2)) - text.getX() + 10, 0);
     }
 
     @Override

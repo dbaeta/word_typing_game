@@ -14,12 +14,10 @@ public class InputWord extends Word implements KeyboardHandler {
 
     InputBlock box = new InputBlock(10, 460, 350, 100, Color.CYAN);
 
-    public InputWord(int posX, int posY) {
-        super(posX, posY, "");
+    public InputWord() {
+        super(185, 510, "");
         inputKey(); //Initializes the method
     }
-
-
 
     public void clearInput() {
         setString("");
@@ -47,12 +45,12 @@ public class InputWord extends Word implements KeyboardHandler {
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
 
-        if(keyboardEvent.getKey()==8){
+        if (keyboardEvent.getKey() == 8) {
             clearInput();
             return;
         }
-        setString (getString() + (char) keyboardEvent.getKey()); //Adds the typed letter to word
-
+        setString(getString() + (char) keyboardEvent.getKey()); //Adds the typed letter to word
+        setTextMiddle(box.getWidth());
     }
 
     @Override
@@ -67,12 +65,12 @@ public class InputWord extends Word implements KeyboardHandler {
     }
 
     @Override
-    public void hide(){
+    public void hide() {
         super.hide();
         box.hide();
     }
 
-    public int getBoxY(){
+    public int getBoxY() {
         return box.getY();
     }
 }
