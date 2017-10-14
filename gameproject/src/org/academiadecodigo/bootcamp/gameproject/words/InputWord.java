@@ -12,7 +12,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
  */
 public class InputWord extends Word implements KeyboardHandler {
 
-    private InputBlock box = new InputBlock(10, 510, 350, 50, Color.CYAN);
+    private InputBlock box = new InputBlock(10, 510, 350, 50, Color.ORANGE);
 
     public InputWord() {
         super(185, 525, "");
