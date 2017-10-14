@@ -4,13 +4,15 @@ import org.academiadecodigo.bootcamp.gameproject.words.InputWord;
 import org.academiadecodigo.bootcamp.gameproject.words.OutputWord;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by Daniel Baeta on 06/10/17.
  */
 class Game {
 
-    private Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle background
+    //private Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle background
+    private Picture background = new Picture(10.0D,10.0D,"/game_background.jpg");
     private Score score = new Score(350, 50);//
     private OutputWord[] fallingWord = new OutputWord[55];
     private InputWord word = new InputWord();//Creates new text for word typing
@@ -53,7 +55,7 @@ class Game {
     }
 
     public void init() throws InterruptedException {
-        background.fill();
+        background.draw();
         score.show();
         for (int i = 0; i < 55; i++) {
             fallingWord[i] = new OutputWord();
