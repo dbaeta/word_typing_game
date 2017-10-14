@@ -25,7 +25,7 @@ public class OutputWord extends Word {
 
     private int chooseWord = (int) Math.floor(Math.random() * str.length);
 
-    private OutputBlock box = new OutputBlock(10, 10, 350, 50, Color.MAGENTA);
+    private OutputBlock box = new OutputBlock(10, 10, 350, 50, Color.WHITE);
 
     public OutputWord() {
         super(165, 25, "");
