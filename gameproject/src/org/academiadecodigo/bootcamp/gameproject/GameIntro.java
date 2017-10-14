@@ -26,21 +26,6 @@ public class GameIntro implements KeyboardHandler {
         keyboard.addEventListener(keyboardEvent);
     }
 
-<<<<<<< HEAD
-    protected void intro() {
-        background.setColor(Color.BLUE);
-        background.fill();
-        introText1.draw();
-        introText2.draw();
-        introText3.draw();
-    }
-
-    protected void introClose() {
-        background.delete();
-        introText1.delete();
-        introText2.delete();
-        introText3.delete();
-=======
     public void intro() throws InterruptedException{
         background.draw();
         instructions.draw();
@@ -53,8 +38,8 @@ public class GameIntro implements KeyboardHandler {
     }
 
     public void introClose() {
->>>>>>> master
-
+        background.delete();
+        instructions.delete();
     }
 
     protected boolean isSpaceStart() {
