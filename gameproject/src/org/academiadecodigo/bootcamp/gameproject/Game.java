@@ -1,29 +1,31 @@
 package org.academiadecodigo.bootcamp.gameproject;
 
-import org.academiadecodigo.bootcamp.gameproject.blocks.InputBlock;
-import org.academiadecodigo.bootcamp.gameproject.blocks.OutputBlock;
 import org.academiadecodigo.bootcamp.gameproject.words.InputWord;
 import org.academiadecodigo.bootcamp.gameproject.words.OutputWord;
-import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
 
 /**
  * Created by Daniel Baeta on 06/10/17.
  */
-public class Game {
+class Game {
 
-    Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle backgr
-    Score score = new Score(350, 50);// ound
-    OutputWord[] fallingWord = new OutputWord[55];
-    InputWord word = new InputWord();//Creates new text for word typing
-    Text level = new Text(175, 50, "Level");
+    private Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle background
+    private Score score = new Score(350, 50);//
+    private OutputWord[] fallingWord = new OutputWord[55];
+    private InputWord word = new InputWord();//Creates new text for word typing
+    private Text level = new Text(175, 50, "Level");
 
     private int speed = 15;
     private boolean changed;
 
 
-    public boolean checkLimit(int pos) {
+    /**
+     * Verifies if the OutputWord's box is above the position of the InputWord's box
+     *
+     * @param pos array index
+     **/
+    private boolean checkLimit(int pos) {
         if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
             score.setGameLives(score.getLives() - 1);
             fallingWord[pos].hide();
@@ -33,7 +35,13 @@ public class Game {
         return false;
     }
 
-    public boolean checkWord(OutputWord outputWord, int pos) {
+    /**
+     * Verifies if the String input matches the OutputWord's
+     *
+     * @param pos        array index for the OutputWord
+     * @param outputWord The OutputWord to compare with
+     **/
+    private boolean checkWord(OutputWord outputWord, int pos) {
         if (word.getString().equals(outputWord.getString())) {
             fallingWord[pos].hide();
             word.clearInput();
@@ -44,7 +52,7 @@ public class Game {
         return false;
     }
 
-    public void init() {
+    public void init() throws InterruptedException {
         background.fill();
         score.show();
         for (int i = 0; i < 55; i++) {
@@ -53,8 +61,6 @@ public class Game {
 
         fallingWord[0].show();
         word.show();
-
-
     }
 
 
@@ -65,7 +71,7 @@ public class Game {
 
         while (!gameOver()) {
 
-            if (counter > 54){
+            if (counter > 54) {
                 System.out.println("You win");
                 break;
             }
@@ -101,12 +107,10 @@ public class Game {
             word.show();
 
         }
-
-        //Metodo imagem Game Over!!
     }
-    
 
-    public boolean gameOver() {
+
+    private boolean gameOver() {
         if (score.getLives() == 0) {
             System.out.println("You lost");
             return true;
@@ -114,7 +118,7 @@ public class Game {
         return false;
     }
 
-    public void gameSpeed() {
+    private void gameSpeed() {
 
         this.speed -= 2;
     }

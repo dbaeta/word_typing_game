@@ -12,7 +12,7 @@ import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
  */
 public class InputWord extends Word implements KeyboardHandler {
 
-    InputBlock box = new InputBlock(10, 460, 350, 100, Color.CYAN);
+    private InputBlock box = new InputBlock(10, 460, 350, 100, Color.CYAN);
 
     public InputWord() {
         super(185, 510, "");
@@ -23,7 +23,11 @@ public class InputWord extends Word implements KeyboardHandler {
         setString("");
     }
 
-    public void inputKey() {
+
+    /**
+     * Adds KeyBoards Events for letter of the alphabet and BACKSPACE
+     **/
+    private void inputKey() {
         Keyboard keyboard = new Keyboard(this);
 
 
@@ -49,6 +53,7 @@ public class InputWord extends Word implements KeyboardHandler {
             clearInput();
             return;
         }
+
         setString(getString() + (char) keyboardEvent.getKey()); //Adds the typed letter to word
         setTextMiddle(box.getWidth());
     }

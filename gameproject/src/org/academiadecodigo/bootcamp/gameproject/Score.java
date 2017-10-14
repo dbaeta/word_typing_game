@@ -13,9 +13,9 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
 //Calculate the score based on the number of correct words typed
 public class Score implements Drawable {
 
-    Rectangle box;
-    Text score;
-    Text lives;
+    private Rectangle box;
+    private Text score;
+    private Text lives;
 
     private int scorePoints;
     private int gameLives=3;
