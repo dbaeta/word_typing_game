@@ -14,16 +14,16 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 class Game {
 
     //private Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle background
-    private Picture background = new Picture(10.0D, 10.0D, "/game_background.jpg");
+    private Picture background = new Picture(10.0D, 10.0D, "/resources/game_background.jpg");
 
     private Score score = new Score(350, 50);//
     private OutputWord[] fallingWord = new OutputWord[55];
     private InputWord word = new InputWord();//Creates new text for word typing
 
-    private Sound soundCorrectWord = new Sound("/plock.wav");
-    private Sound soundWrongWord = new Sound("/glassBreak.wav");
-    private Sound soundGameOver = new Sound("/sadTrombone.wav");
-    private Sound soundGame = new Sound("/8Bit.wav");
+    private Sound soundCorrectWord = new Sound("/resources/plock.wav");
+    private Sound soundWrongWord = new Sound("/resources/glassBreak.wav");
+    private Sound soundGameOver = new Sound("/resources/sadTrombone.wav");
+    private Sound soundGame = new Sound("/resources/8Bit.wav");
 
     private int speed = 15;
     private boolean changed;

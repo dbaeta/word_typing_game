@@ -17,8 +17,8 @@ public class GameIntro implements KeyboardHandler {
     private boolean spaceStart;
     private Keyboard keyboard = new Keyboard(this);
     private KeyboardEvent keyboardEvent=new KeyboardEvent();
-    private Picture background = new Picture (10, 10, "game_start_menu.jpg");
-    private Picture instructions = new Picture (10, 10, "game_start_instructions.png");
+    private Picture background = new Picture (10, 10, "/resources/game_start_menu.jpg");
+    private Picture instructions = new Picture (10, 10, "/resources/game_start_instructions.png");
 
     protected GameIntro(){
         keyboardEvent.setKey(KeyboardEvent.KEY_SPACE);
