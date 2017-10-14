@@ -18,6 +18,7 @@ class Game {
     private Sound soundCorrectWord = new Sound("/plock.wav");
     private Sound soundWrongWord = new Sound("/glassBreak.wav");
     private Sound soundGameOver = new Sound("/sadTrombone.wav");
+    private Sound soundGame = new Sound("/8Bit.wav");
 
     private int speed = 15;
     private boolean changed;
@@ -72,9 +73,9 @@ class Game {
 
         int counter = 0;
 
+        soundGame.play(true);
 
         while (!gameOver()) {
-
             if (counter > 54) {
                 System.out.println("You win");
                 break;
@@ -110,6 +111,7 @@ class Game {
             word.show();
 
         }
+        soundGame.stop();
     }
 
 
