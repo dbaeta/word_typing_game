@@ -7,19 +7,18 @@ import org.academiadecodigo.simplegraphics.keyboard.Keyboard;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEvent;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardEventType;
 import org.academiadecodigo.simplegraphics.keyboard.KeyboardHandler;
+import org.academiadecodigo.simplegraphics.pictures.Picture;
 
 /**
  * Created by codecadet on 14/10/17.
  */
 public class GameIntro implements KeyboardHandler {
 
-    private Rectangle background = new Rectangle(10, 10, 350, 600);
-    private Text introText1 = new Text(90, 200, "TO PLAY GO TO THE COFFE POT");
-    private Text introText2 = new Text(105, 300, "AND INSERT 0.20 CENTS");
-    private Text introText3 = new Text(90, 400, "THEN PRESS SPACE TO START");
     private boolean spaceStart;
     private Keyboard keyboard = new Keyboard(this);
     private KeyboardEvent keyboardEvent=new KeyboardEvent();
+    private Picture background = new Picture (10, 10, "game_start_menu.jpg");
+    private Picture instructions = new Picture (10, 10, "game_start_instructions.png");
 
     protected GameIntro(){
         keyboardEvent.setKey(KeyboardEvent.KEY_SPACE);
@@ -27,6 +26,7 @@ public class GameIntro implements KeyboardHandler {
         keyboard.addEventListener(keyboardEvent);
     }
 
+<<<<<<< HEAD
     protected void intro() {
         background.setColor(Color.BLUE);
         background.fill();
@@ -40,6 +40,20 @@ public class GameIntro implements KeyboardHandler {
         introText1.delete();
         introText2.delete();
         introText3.delete();
+=======
+    public void intro() throws InterruptedException{
+        background.draw();
+        instructions.draw();
+        while(!spaceStart){
+            Thread.sleep(1000);
+            instructions.delete();
+            Thread.sleep(500);
+            instructions.draw();
+        }
+    }
+
+    public void introClose() {
+>>>>>>> master
 
     }
 
