@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.gameproject;
 
+import org.academiadecodigo.bootcamp.gameproject.utils.Sound;
 import org.academiadecodigo.bootcamp.gameproject.words.InputWord;
 import org.academiadecodigo.bootcamp.gameproject.words.OutputWord;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
@@ -14,7 +15,9 @@ class Game {
     private Score score = new Score(350, 50);//
     private OutputWord[] fallingWord = new OutputWord[55];
     private InputWord word = new InputWord();//Creates new text for word typing
-    private Text level = new Text(175, 50, "Level");
+    private Sound soundCorrectWord = new Sound("/plock.wav");
+    private Sound soundWrongWord = new Sound("/glassBreak.wav");
+    private Sound soundGameOver = new Sound("/sadTrombone.wav");
 
     private int speed = 15;
     private boolean changed;
@@ -27,6 +30,7 @@ class Game {
      **/
     private boolean checkLimit(int pos) {
         if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
+            soundWrongWord.play(true);
             score.setGameLives(score.getLives() - 1);
             fallingWord[pos].hide();
             word.clearInput();
@@ -43,12 +47,12 @@ class Game {
      **/
     private boolean checkWord(OutputWord outputWord, int pos) {
         if (word.getString().equals(outputWord.getString())) {
+            soundCorrectWord.play(true);
             fallingWord[pos].hide();
             word.clearInput();
             score.setScorePoints(fallingWord[pos].getBoxY());
             return true;
         }
-
         return false;
     }
 
@@ -97,7 +101,6 @@ class Game {
             if (counter > 0 && counter % 5 == 0) {
                 if (!this.changed) {
                     gameSpeed();
-                    level.draw();
                     this.changed = true;
                 }
             }
@@ -113,6 +116,7 @@ class Game {
     private boolean gameOver() {
         if (score.getLives() == 0) {
             System.out.println("You lost");
+            soundGameOver.play(true);
             return true;
         }
         return false;
