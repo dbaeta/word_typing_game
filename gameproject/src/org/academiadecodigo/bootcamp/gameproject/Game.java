@@ -62,7 +62,7 @@ class Game {
         return false;
     }
 
-    public void init() throws InterruptedException {
+   public void init() throws InterruptedException {
         background.draw();
         score.show();
         for (int i = 0; i < 55; i++) {
@@ -136,10 +136,10 @@ class Game {
             winMessage.setColor(Color.MAGENTA);
             winMessage.draw();
             winMessage.fill();
-            Text message = new Text(185, 190, "You Lose!");
+            Text message = new Text(165, 190, "Game Over!");
             message.grow(50, 25);
             message.draw();
-            System.out.println("You lost");
+            System.out.println("Game Over");
             soundGameOver.play(true);
 
             return true;

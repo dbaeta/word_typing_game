@@ -21,36 +21,33 @@ public class Score implements Drawable {
     private int gameLives=3;
 
 
-    public Score(int width, int height) {
+    Score(int width, int height) {
         this.box = new Rectangle(10, 560, width, height);
         this.score = new Text(50,580, "SCORE " + getScorePoints());
         this.lives = new Text(250,580, "LIVES " + getLives() );
     }
 
-    public void setColor(Color color) {
-        box.setColor(color);
-    }
 
 
-    public int getLives(){
+    int getLives(){
         return gameLives;
     }
 
 
-    public void setGameLives(int gameLives) {
+    void setGameLives(int gameLives) {
         this.gameLives = gameLives;
         lives.setText("LIVES " + this.gameLives);
         show();
     }
 
 
-    public int getScorePoints() {
+    private int getScorePoints() {
 
         return scorePoints;
     }
 
 
-    public void setScorePoints(int boxY) {
+    void setScorePoints(int boxY) {
         this.scorePoints += (500 / (boxY/2))*10;
         int updateScore = scorePoints;
         score.setText("SCORE " + updateScore);

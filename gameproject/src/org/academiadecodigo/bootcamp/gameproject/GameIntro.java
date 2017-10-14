@@ -21,13 +21,13 @@ public class GameIntro implements KeyboardHandler {
     private Keyboard keyboard = new Keyboard(this);
     private KeyboardEvent keyboardEvent=new KeyboardEvent();
 
-    public GameIntro(){
+    protected GameIntro(){
         keyboardEvent.setKey(KeyboardEvent.KEY_SPACE);
         keyboardEvent.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(keyboardEvent);
     }
 
-    public void intro() {
+    protected void intro() {
         background.setColor(Color.BLUE);
         background.fill();
         introText1.draw();
@@ -35,7 +35,7 @@ public class GameIntro implements KeyboardHandler {
         introText3.draw();
     }
 
-    public void introClose() {
+    protected void introClose() {
         background.delete();
         introText1.delete();
         introText2.delete();
@@ -43,7 +43,7 @@ public class GameIntro implements KeyboardHandler {
 
     }
 
-    public boolean isSpaceStart() {
+    protected boolean isSpaceStart() {
         return spaceStart;
     }
 

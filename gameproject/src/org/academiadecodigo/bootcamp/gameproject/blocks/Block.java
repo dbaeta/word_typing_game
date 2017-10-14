@@ -37,11 +37,6 @@ abstract class Block implements Drawable, Movable {
     }
 
     @Override
-    public int getX() {
-        return box.getX();
-    }
-
-    @Override
     public int getY() {
         return box.getY();
     }

@@ -31,12 +31,12 @@ public class Sound {
         clip.stop();
     }
 
-    public void close() {
+   public void close() {
 
         clip.close();
     }
 
-    public int getLength(){return clip.getFrameLength();}
+    private int getLength(){return clip.getFrameLength();}
 
     public void loopIndef() {
 
@@ -49,7 +49,7 @@ public class Sound {
 
     public void reOpen() {
 
-        AudioInputStream inputStream = null;
+        AudioInputStream inputStream;
 
         try {
 
@@ -64,7 +64,7 @@ public class Sound {
     private void initClip(String path) {
 
         soundURL = Sound.class.getResource(path); //if loading from jar
-        AudioInputStream inputStream = null;
+        AudioInputStream inputStream;
 
         try {
 

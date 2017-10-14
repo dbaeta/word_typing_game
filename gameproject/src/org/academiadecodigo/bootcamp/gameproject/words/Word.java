@@ -9,10 +9,10 @@ import org.academiadecodigo.simplegraphics.graphics.Text;
  */
 abstract class Word implements Drawable, Movable {
 
-    Text text;
-    String string = "";
+   private Text text;
+   private String string = "";
 
-    public Word(int posX, int posY, String string){
+    Word(int posX, int posY, String string){
         this.string = string;
         text = new Text (posX, posY, string);
     }
@@ -32,13 +32,13 @@ abstract class Word implements Drawable, Movable {
         return string;
     }
 
-    public void setString(String string){
+    void setString(String string){
         this.string = string;
         text.setText(string);
         text.draw();
     }
 
-    public void setTextMiddle (int widthBox){
+    void setTextMiddle(int widthBox){
         text.translate(((widthBox/2)-(text.getWidth()/2)) - text.getX() + 10, 0);
     }
 
@@ -47,10 +47,6 @@ abstract class Word implements Drawable, Movable {
         text.translate(0,1);
     }
 
-    @Override
-    public int getX() {
-        return text.getX();
-    }
 
     @Override
     public int getY() {

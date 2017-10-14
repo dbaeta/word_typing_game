@@ -6,7 +6,6 @@ package org.academiadecodigo.bootcamp.gameproject.actions;
 public interface Movable {
 
     void move();
-    int getX();
     int getY();
     int getWidth();
     int getHeigth();
