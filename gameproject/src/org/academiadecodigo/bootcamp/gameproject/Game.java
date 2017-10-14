@@ -19,6 +19,7 @@ class Game {
     private Score score = new Score(350, 50);//
     private OutputWord[] fallingWord = new OutputWord[55];
     private InputWord word = new InputWord();//Creates new text for word typing
+
     private Sound soundCorrectWord = new Sound("/plock.wav");
     private Sound soundWrongWord = new Sound("/glassBreak.wav");
     private Sound soundGameOver = new Sound("/sadTrombone.wav");
@@ -124,6 +125,7 @@ class Game {
 
         }
         soundGame.stop();
+        fallingWord[counter].hide();
     }
 
 
@@ -139,6 +141,7 @@ class Game {
             message.draw();
             System.out.println("You lost");
             soundGameOver.play(true);
+
             return true;
         }
         return false;
