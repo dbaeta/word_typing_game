@@ -112,7 +112,7 @@ class Game {
 
             }
 
-            if (counter > 0 && counter % 5 == 0) {
+            if (counter > 0 && counter % 2 == 0) {
                 if (!this.changed) {
                     gameSpeed();
                     this.changed = true;
@@ -150,7 +150,10 @@ class Game {
 
     private void gameSpeed() {
 
-        this.speed -= 2;
+        this.speed -= 1;
+        if(this.speed<2){
+            this.speed=1;
+        }
     }
 
 }
