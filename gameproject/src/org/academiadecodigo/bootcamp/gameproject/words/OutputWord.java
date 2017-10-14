@@ -8,13 +8,20 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
  */
 public class OutputWord extends Word {
 
-
+/*
    private String[] str = {"IMPORT", "RETURN", "PUBLIC", "STRING", "JAVA", "PRIVATE", "UTIL", "STATIC", "THROWS", "BOOLEAN",
             "PACKAGE", "ANDROID", "APACHE", "JAVAX", "LENGTH", "OBJECT", "CONTEXT", "APPEND", "AUTHOR", "SYNCHRONIZED",
             "GOOGLE", "MODEL", "COMMON", "BYTE", "CLIENT", "SYSTEM", "FROM", "GENERATED", "ANNOTATION", "REQUEST",
             "MESSAGE", "CONTENT", "INTEGER", "EXCEPTION", "INSTANCEOF", "DEFAULT", "SPRINGFRAMEWORK", "ATTRIBUTE",
             "PROPERTY", "RETURNS", "DESCRIPTION", "PERSISTENCE","INFORMATION", "FRAMEWORK", "SPECIFIED",  "METHOD",
             "ANNOTATIONS", "COLLECTION","THROWABLE", "EXECUTE", "REFERENCE", "ITERATOR", "BOOLEAN", "FACTORY","RUNTIME"};
+*/
+    private String[] str = {"A", "A", "A", "A", "A", "A", "A", "A", "A", "A",
+            "A", "A", "A", "A", "A", "A", "A", "A", "A", "A",
+            "A", "A", "A", "A", "A", "A", "A", "A", "A", "A",
+            "A", "A", "A", "A", "A", "A", "A", "A",
+            "A", "A", "A", "A","A", "A", "A", "A",
+            "A", "A","A", "A", "A", "A", "A", "A","A"};
 
     private int chooseWord = (int) Math.floor(Math.random() * str.length);
 

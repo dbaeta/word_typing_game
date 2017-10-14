@@ -89,12 +89,12 @@ class Game {
                 ++counter;
                 fallingWord[counter].show();
                 changed = false;
-                System.out.println(counter);
+                System.out.println(counter + " " + speed);
                 continue;
 
             }
 
-            if (counter > 0 && counter % 5 == 0) {
+            if (counter > 0 && counter % 3 == 0) {
                 if (!this.changed) {
                     gameSpeed();
                     level.draw();
@@ -120,7 +120,10 @@ class Game {
 
     private void gameSpeed() {
 
-        this.speed -= 2;
+        this.speed -= 1;
+        if (this.speed < 2) {
+            this.speed = 1;
+        }
     }
 
 }

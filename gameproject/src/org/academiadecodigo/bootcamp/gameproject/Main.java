@@ -5,11 +5,19 @@ package org.academiadecodigo.bootcamp.gameproject;
  */
 public class Main {
     public static void main(String[] args) {
+        GameIntro gameIntro = new GameIntro();
         Game game = new Game();
 
         try {
-            game.init();
-            game.start();
+            while(true) {
+                gameIntro.intro();
+                if (gameIntro.isSpaceStart()) {
+                    gameIntro.introClose();
+                    game.init();
+                    game.start();
+                }
+            }
+
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
