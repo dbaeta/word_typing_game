@@ -126,6 +126,7 @@ class Game {
         }
         soundGame.stop();
         fallingWord[counter].hide();
+        word.clearInput();
     }
 
 
