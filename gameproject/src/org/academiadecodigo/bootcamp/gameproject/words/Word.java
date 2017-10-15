@@ -35,7 +35,6 @@ abstract class Word implements Drawable, Movable {
     void setString(String string) {
         this.string = string;
         text.setText(string);
-        text.draw();
     }
 
     void setTextMiddle(int widthBox) {

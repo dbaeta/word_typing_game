@@ -43,6 +43,7 @@ class Game {
         int counter = 0;
 
         soundGame.play(true);
+        word.clearInput();
 
         while (!gameOver()) {
 
