@@ -86,6 +86,8 @@ class Game {
         soundGame.stop();
         fallingWord[counter].hide();
         word.clearInput();
+        Thread.sleep(5000);
+        System.exit(0);
     }
 
     /**
@@ -140,6 +142,7 @@ class Game {
             message.draw();
             System.out.println("Game Over");
             soundGameOver.play(true);
+
             return true;
         }
         return false;

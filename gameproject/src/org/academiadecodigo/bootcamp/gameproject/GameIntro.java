@@ -1,5 +1,6 @@
 package org.academiadecodigo.bootcamp.gameproject;
 
+import org.academiadecodigo.bootcamp.gameproject.utils.Sound;
 import org.academiadecodigo.simplegraphics.graphics.Color;
 import org.academiadecodigo.simplegraphics.graphics.Rectangle;
 import org.academiadecodigo.simplegraphics.graphics.Text;
@@ -19,6 +20,7 @@ public class GameIntro implements KeyboardHandler {
     private KeyboardEvent keyboardEvent = new KeyboardEvent();
     private Picture background = new Picture(10, 10, "resources/game_start_menu.jpg");
     private Picture instructions = new Picture(10, 10, "resources/game_start_instructions.png");
+    private Sound soundIntro = new Sound("/resources/Intro.wav");
 
     protected GameIntro() {
         keyboardEvent.setKey(KeyboardEvent.KEY_SPACE);
@@ -29,12 +31,15 @@ public class GameIntro implements KeyboardHandler {
     public void intro() throws InterruptedException {
         background.draw();
         instructions.draw();
+        soundIntro.play(true);
         while (!spaceStart) {
+            soundIntro.loopIndef();
             Thread.sleep(1000);
             instructions.delete();
             Thread.sleep(500);
             instructions.draw();
         }
+        soundIntro.stop();
     }
 
     public void introClose() {
