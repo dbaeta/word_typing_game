@@ -51,7 +51,10 @@ public class InputWord extends Word implements KeyboardHandler {
 
         if (keyboardEvent.getKey() == 8) {
             clearInput();
-            return;
+            //if (getString().length() > 0) {
+                //setString(getString().substring(0, getString().length() - 1));
+                return;
+            //}
         }
 
         if (getString().length() < 20) {
