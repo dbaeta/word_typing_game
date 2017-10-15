@@ -4,20 +4,22 @@ package org.academiadecodigo.bootcamp.gameproject;
  * Created by codecadet on 10/10/17.
  */
 public class Main {
+
+    static GameIntro gameIntro = new GameIntro();
+    static Game game = new Game();
+    static boolean gameBegun = true;
+
     public static void main(String[] args) {
-        GameIntro gameIntro = new GameIntro();
-        Game game = new Game();
-        boolean cenas=true;
+
 
         try {
-            while (cenas) {
+            while (gameBegun) {
                 gameIntro.intro();
                 if (gameIntro.isSpaceStart()) {
                     gameIntro.introClose();
                     game.init();
                     game.start();
-                    cenas=false;
-
+                    gameBegun = false;
                 }
             }
 

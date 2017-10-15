@@ -16,6 +16,7 @@ public class Sound {
 
     /**
      * Plays the clip from the point it was stopped or from start if passed with the fromStart argument false or true
+     *
      * @param fromStart should be true if want to replay the sound from the start or false otherwise
      */
     public void play(boolean fromStart) {
@@ -31,17 +32,19 @@ public class Sound {
         clip.stop();
     }
 
-   public void close() {
+    public void close() {
 
         clip.close();
     }
 
-    private int getLength(){return clip.getFrameLength();}
+    private int getLength() {
+        return clip.getFrameLength();
+    }
 
     public void loopIndef() {
 
         //sets loop points at start and end of track
-        clip.setLoopPoints(0,(int)(getLength()*0.94));
+        clip.setLoopPoints(0, (int) (getLength() * 0.94));
 
         //activates loop
         clip.loop(Clip.LOOP_CONTINUOUSLY);

@@ -13,7 +13,6 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
  */
 class Game {
 
-    //private Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle background
     private Picture background = new Picture(10.0D, 10.0D, "resources/game_background.jpg");
 
     private Score score = new Score(350, 50);//
@@ -29,20 +28,64 @@ class Game {
     private boolean changed;
 
 
-    /**
-     * Verifies if the OutputWord's box is above the position of the InputWord's box
-     *
-     * @param pos array index
-     **/
-    private boolean checkLimit(int pos) {
-        if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
-            soundWrongWord.play(true);
-            score.setGameLives(score.getLives() - 1);
-            fallingWord[pos].hide();
-            word.clearInput();
-            return true;
+    public void init() throws InterruptedException {
+        background.draw();
+        score.show();
+        for (int i = 0; i < 55; i++) {
+            fallingWord[i] = new OutputWord();
         }
-        return false;
+        fallingWord[0].show();
+        word.show();
+    }
+
+    public void start() throws InterruptedException {
+
+        int counter = 0;
+
+        soundGame.play(true);
+
+        while (!gameOver()) {
+
+            boolean verifyLimit;
+            boolean verifyWord;
+
+            fallingWord[counter].move();
+            verifyWord = checkWord(fallingWord[counter], counter);
+            verifyLimit = checkLimit(counter);
+
+            if (counter > 54) {
+                System.out.println("You win");
+                Rectangle winMessage = new Rectangle(10, 150, 350, 100);
+                winMessage.setColor(Color.MAGENTA);
+                winMessage.draw();
+                winMessage.fill();
+                Text message = new Text(185, 190, "You Win");
+                message.grow(50, 25);
+                message.draw();
+                break;
+            }
+
+            if (verifyLimit || verifyWord) {
+                ++counter;
+                fallingWord[counter].show();
+                changed = false;
+                System.out.println(counter);
+                continue;
+            }
+
+            if (counter > 0 && counter % 2 == 0) {
+                if (!this.changed) {
+                    gameSpeed();
+                    this.changed = true;
+                }
+            }
+
+            Thread.sleep(speed);
+            word.show();
+        }
+        soundGame.stop();
+        fallingWord[counter].hide();
+        word.clearInput();
     }
 
     /**
@@ -62,73 +105,28 @@ class Game {
         return false;
     }
 
-   public void init() throws InterruptedException {
-        background.draw();
-        score.show();
-        for (int i = 0; i < 55; i++) {
-            fallingWord[i] = new OutputWord();
-        }
 
-        fallingWord[0].show();
-        word.show();
+    /**
+     * Verifies if the OutputWord's box is above the position of the InputWord's box
+     *
+     * @param pos array index
+     **/
+    private boolean checkLimit(int pos) {
+        if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
+            soundWrongWord.play(true);
+            score.setGameLives(score.getLives() - 1);
+            fallingWord[pos].hide();
+            word.clearInput();
+            return true;
+        }
+        return false;
     }
 
-
-    public void start() throws InterruptedException {
-
-        int counter = 0;
-
-        soundGame.play(true);
-
-        while (!gameOver()) {
-            if (counter > 54) {
-                System.out.println("You win");
-                Rectangle winMessage = new Rectangle(10, 150, 350, 100);
-                winMessage.setColor(Color.MAGENTA);
-                winMessage.draw();
-                winMessage.fill();
-                Text message = new Text(185, 190, "You Win");
-                message.grow(50, 25);
-                message.draw();
-                Thread.sleep(3000);
-                break;
-            }
-
-            boolean verifyLimit;
-            boolean verifyWord;
-
-            fallingWord[counter].move();
-            verifyWord = checkWord(fallingWord[counter], counter);
-            verifyLimit = checkLimit(counter);
-
-
-            if (verifyLimit || verifyWord) {
-
-                ++counter;
-                fallingWord[counter].show();
-                changed = false;
-                System.out.println(counter);
-                continue;
-
-            }
-
-            if (counter > 0 && counter % 2 == 0) {
-                if (!this.changed) {
-                    gameSpeed();
-                    this.changed = true;
-                }
-            }
-
-            Thread.sleep(speed);
-
-            word.show();
-
-        }
-        soundGame.stop();
-        fallingWord[counter].hide();
-        word.clearInput();
-    }
-
+    /**
+     * Check if lives equals zero and if so, displays message "Game Over"
+     *
+     * @return false if lives different from zero
+     */
 
     private boolean gameOver() {
         if (score.getLives() == 0) {
@@ -142,17 +140,19 @@ class Game {
             message.draw();
             System.out.println("Game Over");
             soundGameOver.play(true);
-
             return true;
         }
         return false;
     }
 
-    private void gameSpeed() {
+    /**
+     * Decreases the game speed by 1
+     */
 
+    private void gameSpeed() {
         this.speed -= 1;
-        if(this.speed<2){
-            this.speed=1;
+        if (this.speed < 2) {
+            this.speed = 1;
         }
     }
 

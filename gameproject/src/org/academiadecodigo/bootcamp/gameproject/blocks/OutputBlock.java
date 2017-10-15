@@ -8,12 +8,10 @@ import org.academiadecodigo.simplegraphics.graphics.Color;
 public class OutputBlock extends Block {
 
 
-    public OutputBlock(int posX, int posY, int width, int height, Color color){
+    public OutputBlock(int posX, int posY, int width, int height, Color color) {
         super(posX, posY, width, height);
         super.setColor(color);
     }
-
-
 
 
 }

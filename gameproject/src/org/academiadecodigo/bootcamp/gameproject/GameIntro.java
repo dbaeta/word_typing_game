@@ -16,20 +16,20 @@ public class GameIntro implements KeyboardHandler {
 
     private boolean spaceStart;
     private Keyboard keyboard = new Keyboard(this);
-    private KeyboardEvent keyboardEvent=new KeyboardEvent();
-    private Picture background = new Picture (10, 10, "resources/game_start_menu.jpg");
-    private Picture instructions = new Picture (10, 10, "resources/game_start_instructions.png");
+    private KeyboardEvent keyboardEvent = new KeyboardEvent();
+    private Picture background = new Picture(10, 10, "resources/game_start_menu.jpg");
+    private Picture instructions = new Picture(10, 10, "resources/game_start_instructions.png");
 
-    protected GameIntro(){
+    protected GameIntro() {
         keyboardEvent.setKey(KeyboardEvent.KEY_SPACE);
         keyboardEvent.setKeyboardEventType(KeyboardEventType.KEY_PRESSED);
         keyboard.addEventListener(keyboardEvent);
     }
 
-    public void intro() throws InterruptedException{
+    public void intro() throws InterruptedException {
         background.draw();
         instructions.draw();
-        while(!spaceStart){
+        while (!spaceStart) {
             Thread.sleep(1000);
             instructions.delete();
             Thread.sleep(500);
@@ -49,7 +49,7 @@ public class GameIntro implements KeyboardHandler {
 
     @Override
     public void keyPressed(KeyboardEvent keyboardEvent) {
-        if(keyboardEvent.getKey()==KeyboardEvent.KEY_SPACE){
+        if (keyboardEvent.getKey() == KeyboardEvent.KEY_SPACE) {
             spaceStart = true;
             System.out.println("Game Started");
         }

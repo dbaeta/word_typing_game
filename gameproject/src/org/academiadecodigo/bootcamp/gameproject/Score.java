@@ -18,18 +18,17 @@ public class Score implements Drawable {
     private Text lives;
 
     private int scorePoints;
-    private int gameLives=3;
+    private int gameLives = 3;
 
 
     Score(int width, int height) {
         this.box = new Rectangle(10, 560, width, height);
-        this.score = new Text(50,580, "SCORE " + getScorePoints());
-        this.lives = new Text(250,580, "LIVES " + getLives() );
+        this.score = new Text(50, 580, "SCORE " + getScorePoints());
+        this.lives = new Text(250, 580, "LIVES " + getLives());
     }
 
 
-
-    int getLives(){
+    int getLives() {
         return gameLives;
     }
 
@@ -48,7 +47,7 @@ public class Score implements Drawable {
 
 
     void setScorePoints(int boxY) {
-        this.scorePoints += (500 / (boxY/2))*10;
+        this.scorePoints += (500 / (boxY / 2)) * 10;
         int updateScore = scorePoints;
         score.setText("SCORE " + updateScore);
         show();
