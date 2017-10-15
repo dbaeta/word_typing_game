@@ -14,7 +14,7 @@ import org.academiadecodigo.simplegraphics.pictures.Picture;
 class Game {
 
     //private Rectangle background = new Rectangle(10, 10, 350, 600);//Create new rectangle background
-    private Picture background = new Picture(10.0D, 10.0D, "/resources/game_background.jpg");
+    private Picture background = new Picture(10.0D, 10.0D, "resources/game_background.jpg");
 
     private Score score = new Score(350, 50);//
     private OutputWord[] fallingWord = new OutputWord[55];
