@@ -26,7 +26,7 @@ public class InputWord extends Word implements KeyboardHandler {
 
     /**
      * Adds KeyBoards Events for letter of the alphabet and BACKSPACE
-     **/
+     */
     private void inputKey() {
         Keyboard keyboard = new Keyboard(this);
 

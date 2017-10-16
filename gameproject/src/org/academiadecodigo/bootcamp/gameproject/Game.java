@@ -110,10 +110,10 @@ class Game {
 
 
     /**
-     * Verifies if the OutputWord's box is above the position of the InputWord's box
+     * Verifies if the OutputWord's box is <b>above</b> the position of the InputWord's box
      *
      * @param pos array index
-     **/
+     */
     private boolean checkLimit(int pos) {
         if (fallingWord[pos].getBoxY() + fallingWord[pos].getBoxHeight() == word.getBoxY()) {
             soundWrongWord.play(true);
